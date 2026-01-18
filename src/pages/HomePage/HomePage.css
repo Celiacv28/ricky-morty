@@ -1,0 +1,47 @@
+
+.home-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.home-page__container {
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+
+
+@media (max-width: 768px) {
+  .home-page {
+    padding: 16px;
+  }
+  
+  .home-page__container {
+    padding: 30px 20px;
+    max-width: 95%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 12px;
+  }
+  
+  .home-page__container {
+    padding: 24px 16px;
+    max-width: 98%;
+  }
+  
+}
