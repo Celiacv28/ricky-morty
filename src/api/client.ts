@@ -1,4 +1,4 @@
-import { BASE_URL } from '../utils/constants';
+const BASE_URL = import.meta.env.VITE_RICKYMORTY_API;
 
 export const httpClient = {
   async get<T>(endpoint: string, params?: Record<string, any>): Promise<T> {

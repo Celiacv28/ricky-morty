@@ -1,5 +1,3 @@
-export const BASE_URL = 'https://rickandmortyapi.com/api';
-
 export const STATUS_OPTIONS = [
   { value: 'alive', label: 'Vivo' },
   { value: 'dead', label: 'Muerto' },
