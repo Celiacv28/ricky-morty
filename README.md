@@ -46,6 +46,13 @@ The application will be available at `http://localhost:5173`
 - **Material-UI v7** - Design system and components
 - **React Router v7** - Client-side routing
 
+### Application Characteristics
+
+- Static SPA (no backend, no database)
+- Direct consumption of the Rick and Morty public API
+- Client-side state management and persistence
+- Ready for static deployment
+
 ### Project Structure
 
 ```
@@ -98,8 +105,8 @@ src/
 
 #### 4. **TypeScript for Type Safety**
 - Interfaces for all entities (`Character`, `Location`, `Episode`)
-- Type safety in component props and function parameters
-- Strict typing with no implicit `any`
+- Strict typing in components and functions
+- No implicit `any`
 - Reusable types (`CharacterFilters` interface)
 
 #### 5. **Hybrid Filtering Strategy**
@@ -120,11 +127,11 @@ This hybrid approach balances API efficiency with flexible local filtering capab
 - **Instant updates**: UI and localStorage sync immediately when toggling favorites 
 
 #### 7. **Performance Optimizations**
-- `useCallback` strategically applied only where needed (handlers used as useEffect dependencies)
-- `useMemo` for expensive computations (filtering, pagination)
-- Efficient data structures for fast lookups
-- Extracted constants (`STATUS_OPTIONS`, `ITEMS_PER_PAGE`)
-- Optimized re-render prevention
+- `useCallback` and `useMemo` applied where beneficial
+- Debounced search inputs 
+- Optimized filtering and pagination
+- Extracted constants and reusable helpers
+- Reduced unnecessary re-renders
 
 ## 📋 Features
 
@@ -139,11 +146,11 @@ This hybrid approach balances API efficiency with flexible local filtering capab
 
 ## 🎨 UI/UX
 
-- Responsive design (mobile-first)
-- Material Design with Material-UI
-- Smooth transitions
-- Clear loading states
-- User-friendly error handling
+- Responsive layout built with Material-UI
+- Consistent component-based design system
+- Clear navigation and interaction patterns
+- Smooth hover and transition effects
+- Visual feedback for loading, errors, and user actions
 
 ## 🚀 Future Improvements & Enhancements
 
@@ -157,45 +164,36 @@ This hybrid approach balances API efficiency with flexible local filtering capab
 - **📱 PWA Support**: Progressive Web App capabilities for offline access
 - **🔄 Character Comparison**: Side-by-side comparison of multiple characters
 - **🎭 Character Relationships**: Visual graph of character connections based on shared episodes/locations
-- **🔐 Authentication & User Profiles** (Optional):
-  - User registration and login (OAuth, social login)
-  - Sync favorites across devices via backend
-  - User profiles with custom lists (watchlist, favorite episodes)
-  - Comments and ratings on characters/episodes
+
+### Requires backend (optional)
+- **Authentication & User Profiles** OAuth, social login
+- Sync favorites across devices via backend
+- User profiles with custom lists (watchlist, favorite episodes)
+- Comments and ratings on characters/episodes
 
 
 ### Technical Enhancements
 
-#### React Modern Features
-- **React Compiler**: Automatic memoization and optimizations when stable with SWC
-- **Concurrent Features**: Use of `useTransition` for non-urgent state updates (filters)
-- **Server Components**: Explore RSC for initial data loading (requires framework migration)
-
-#### State Management
 - **Context API**: Global state management for favorites and theme
   - `FavoritesContext`: Share favorites across components without prop drilling
   - `ThemeContext`: Theme preferences and dark mode
   - `FilterContext`: Share filter state across pages
-- **React Query / TanStack Query**: Advanced data fetching with caching, background updates, and optimistic updates
-- **Zustand**: Lightweight state management alternative for global state
-
-#### Performance
+- **React Query / TanStack Query**: Data caching and background refetching
 - **Code Splitting**: Route-based code splitting with React.lazy()
 - **Virtual Scrolling**: For large character lists using react-window
 - **Image Optimization**: Lazy loading and progressive images
-- **Bundle Analysis**: Webpack bundle analyzer for optimization opportunities
-- **Service Worker**: Caching strategy for API responses
+- **Memoization** with useMemo and useCallback where beneficial
 
 #### Testing
 - **Unit Tests**: Vitest for hooks and utility functions
 - **Component Tests**: React Testing Library for component behavior
 - **E2E Tests**: Playwright or Cypress for critical user flows
-- **Visual Regression**: Chromatic or Percy for UI consistency
 
-#### Developer Experience
-- **Error Boundary**: Graceful error handling with fallback UI
-- **Logging**: Structured logging for debugging and monitoring
-- **Analytics**: User behavior tracking (e.g., most viewed characters)
+#### Developer
+- Error Boundaries for graceful runtime error handling
+- Centralized handling of API errors and empty states
+- Environment-based configuration (API base URL via environment variables)
+
 
 #### Accessibility (a11y)
 - **ARIA Labels**: Comprehensive screen reader support
@@ -205,17 +203,16 @@ This hybrid approach balances API efficiency with flexible local filtering capab
 #### API Enhancements
 - **Request Cancellation**: AbortController for pending requests
 - **Retry Logic**: Automatic retry with exponential backoff
-- **Rate Limiting**: Handle API rate limits gracefully
 
-### Architecture Improvements
+### Architecture Improvements (Future)
 - **Design System**: Shared component library with documentation
 - **CI/CD**: Automated testing and deployment pipeline
 - **Monitoring**: Error tracking (Sentry) and performance monitoring
-- **Docker**: Containerized development and deployment
+- **Docker**: Setup for development and deployment (optional, mainly for future backend integration)
 
 ### Known Limitations
 - No pagination controls shown when viewing favorites (intentional UX decision)
 - No offline support yet (data requires API connection)
-- Limited to Rick and Morty API rate limits
+- Subject to public Rick and Morty API rate limits
 
 ```
