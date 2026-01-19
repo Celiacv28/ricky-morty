@@ -178,6 +178,7 @@ This hybrid approach balances API efficiency with flexible local filtering capab
   - `FavoritesContext`: Share favorites across components without prop drilling
   - `ThemeContext`: Theme preferences and dark mode
   - `FilterContext`: Share filter state across pages
+- **API error model**: Introduce a typed API error model (e.g. statusCode, message) for consistent error handling (404, 429, 500)
 - **React Query / TanStack Query**: Data caching and background refetching
 - **Code Splitting**: Route-based code splitting with React.lazy()
 - **Virtual Scrolling**: For large character lists using react-window
