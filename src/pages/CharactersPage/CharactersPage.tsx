@@ -12,7 +12,7 @@ import { CharacterFilters } from '../../components/character/CharacterFilters';
 import { CharacterGrid } from '../../components/character/CharacterGrid';
 import { Pagination } from '../../components/common/Pagination';
 import type { CharacterFilters as Filters, Character } from '../../api/character/character.types';
-import { ITEMS_PER_PAGE } from '../../utils/constants';
+import { ITEMS_PER_PAGE, BTN_CLEAR_FILTERS, FAVORITE_LABEL_SINGULAR, FAVORITE_LABEL_PLURAL } from '../../utils/constants';
 
 export const CharactersPage = () => {
   const navigate = useNavigate();  
@@ -133,13 +133,13 @@ export const CharactersPage = () => {
               onClick={clearAllFilters} 
               color="secondary"
             >
-              Limpiar filtros
+              {BTN_CLEAR_FILTERS}
             </Button>
           )}
 
           {showOnlyFavorites && filteredCharacters.length > 0 && (
             <Chip 
-              label={`${filteredCharacters.length} favorito${filteredCharacters.length !== 1 ? 's' : ''}`}
+              label={`${filteredCharacters.length} ${filteredCharacters.length !== 1 ? FAVORITE_LABEL_PLURAL : FAVORITE_LABEL_SINGULAR}`}
               onDelete={() => setShowOnlyFavorites(false)}
               color="error"
             />

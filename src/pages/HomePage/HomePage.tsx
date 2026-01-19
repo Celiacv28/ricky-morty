@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import './HomePage.css';
+import { HOME_TITLE, HOME_SUBTITLE, BTN_ACCESS } from '../../utils/constants';
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ export const HomePage = () => {
   return (
     <div className="home-page">
       <div className="home-page__container">
-        <h1>Bienvenido al Portal</h1>
-        <p>Explora el universo de Rick and Morty. Descubre todos los personajes</p>
+        <h1>{HOME_TITLE}</h1>
+        <p>{HOME_SUBTITLE}</p>
         <div>
           <Button            
             size="large"
@@ -29,7 +30,7 @@ export const HomePage = () => {
               color: '#2c3e50',
             }}
           >
-            Acceder
+            {BTN_ACCESS}
           </Button>
         </div>
       </div>

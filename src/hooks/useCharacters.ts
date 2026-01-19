@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { characterApi } from '../api/character/characterApi';
+import { ERROR_MESSAGES } from '../utils/constants';
 import type { Character, CharacterFilters } from '../api/character/character.types';
 
 interface UseCharactersState {
@@ -26,7 +27,7 @@ export const useCharacters = (filters: CharacterFilters = {}): UseCharactersStat
         setCharacters(data.results);
         setTotalPages(data.info.pages);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error al cargar personajes');
+        setError(err instanceof Error ? err.message : ERROR_MESSAGES.LOAD_CHARACTERS);
         setCharacters([]);
         setTotalPages(0);
       } finally {

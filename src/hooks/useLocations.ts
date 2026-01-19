@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { locationApi } from '../api/location/locationApi';
+import { ERROR_MESSAGES } from '../utils/constants';
 import type { LocationDetail, LocationFilters } from '../api/location/location.types';
 
 interface UseLocationsState {
@@ -26,7 +27,7 @@ export const useLocations = (filters: LocationFilters = {}): UseLocationsState =
         setLocations(data.results);
         setTotalPages(data.info.pages);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error al cargar ubicaciones');
+        setError(err instanceof Error ? err.message : ERROR_MESSAGES.LOAD_LOCATIONS);
         setLocations([]);
         setTotalPages(0);
       } finally {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { locationApi } from '../api/location/locationApi';
 import { characterApi } from '../api/character/characterApi';
+import { ERROR_MESSAGES } from '../utils/constants';
 import type { Character } from '../api/character/character.types';
 
 interface UseLocationCharactersState {
@@ -35,7 +36,7 @@ export const useLocationCharacters = (locationId: number | null): UseLocationCha
           setCharacters([]);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error al cargar personajes de la location');
+        setError(err instanceof Error ? err.message : ERROR_MESSAGES.LOAD_LOCATION_CHARACTERS);
         setCharacters([]);
       } finally {
         setLoading(false);

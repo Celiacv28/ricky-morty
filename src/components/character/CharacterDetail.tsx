@@ -3,7 +3,7 @@ import { Box, Card, CardContent, CardMedia, Typography, Chip, Divider, Grid } fr
 import { Person, Psychology, Transgender, LocationOn, Explore } from '@mui/icons-material';
 import type { Character } from '../../api/character/character.types';
 import { getStatusColor } from '../../utils/utils';
-import { STATUS_OPTIONS } from '../../utils/constants';
+import { STATUS_OPTIONS, LABEL_SPECIES, LABEL_STATUS, LABEL_GENDER, LABEL_TYPE, LABEL_CURRENT_LOCATION, LABEL_ORIGIN, UNKNOWN_LABEL } from '../../utils/constants';
 import type { SvgIconComponent } from '@mui/icons-material';
 
 interface CharacterDetailProps {
@@ -66,33 +66,33 @@ export const CharacterDetail = ({ character }: CharacterDetailProps) => {
 
             <Grid container spacing={2}>
               <Grid size={{ xs: 12, sm: 6 }}>
-                <InfoItem icon={Person} label="Especie" value={character.species} />
+                <InfoItem icon={Person} label={LABEL_SPECIES} value={character.species} />
               </Grid>
 
               <Grid size={{ xs: 12, sm: 6 }}>
-                <InfoItem icon={Transgender} label="Género" value={character.gender} />
+                <InfoItem icon={Transgender} label={LABEL_GENDER} value={character.gender} />
               </Grid>
 
               <Grid size={{ xs: 12, sm: 6 }}>
                 <InfoItem 
                   icon={Psychology} 
-                  label="Estado" 
-                  value={STATUS_OPTIONS.find(opt => opt.value === character.status.toLowerCase())?.label || 'Desconocido'}
+                  label={LABEL_STATUS}
+                  value={STATUS_OPTIONS.find(opt => opt.value === character.status.toLowerCase())?.label || UNKNOWN_LABEL}
                 />
               </Grid>
 
               {character.type && (
                 <Grid size={{ xs: 12, sm: 6 }}>
-                  <InfoItem icon={Person} label="Tipo" value={character.type} />
+                  <InfoItem icon={Person} label={LABEL_TYPE} value={character.type} />
                 </Grid>
               )}
 
               <Grid size={{ xs: 12 }}>
-                <InfoItem icon={LocationOn} label="Ubicación Actual" value={character.location.name} alignTop />
+                <InfoItem icon={LocationOn} label={LABEL_CURRENT_LOCATION} value={character.location.name} alignTop />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <InfoItem icon={Explore} label="Origen" value={character.origin.name} alignTop />
+                <InfoItem icon={Explore} label={LABEL_ORIGIN} value={character.origin.name} alignTop />
               </Grid>
             </Grid>
           </CardContent>

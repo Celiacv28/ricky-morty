@@ -4,7 +4,7 @@ import { ClearAll } from '@mui/icons-material';
 import { useDebounce } from '../../hooks/useDebounce';
 import type { CharacterFilters as Filters } from '../../api/character/character.types';
 import type { LocationDetail } from '../../api/location/location.types';
-import { STATUS_OPTIONS } from '../../utils/constants';
+import { STATUS_OPTIONS, LABEL_LOCATION, LABEL_STATUS, OPTION_ALL, OPTION_ALL_FEM, SEARCH_LABEL_NAME, SEARCH_LABEL_SPECIES, SEARCH_PLACEHOLDER_NAME, SEARCH_PLACEHOLDER_SPECIES, BTN_CLEAR_FILTERS } from '../../utils/constants';
 
 interface CharacterFiltersProps {
   onFilterChange: (filters: Filters) => void;
@@ -57,11 +57,11 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <TextField
             fullWidth
-            label="Buscar por nombre"
+            label={SEARCH_LABEL_NAME}
             variant="outlined"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Ej: Rick"
+            placeholder={SEARCH_PLACEHOLDER_NAME}
             size="small"
           />
         </Grid>
@@ -69,18 +69,18 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <TextField
             fullWidth
-            label="Buscar por especie"
+            label={SEARCH_LABEL_SPECIES}
             variant="outlined"
             value={species}
             onChange={(e) => setSpecies(e.target.value)}
-            placeholder="Ej: Human"
+            placeholder={SEARCH_PLACEHOLDER_SPECIES}
             size="small"
           />
         </Grid>
 
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <FormControl fullWidth size="small">
-            <InputLabel id="location-label">Localización</InputLabel>
+            <InputLabel id="location-label">{LABEL_LOCATION}</InputLabel>
             <Select
               labelId="location-label"
               id="location-select"
@@ -89,7 +89,7 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
               onChange={(e) => handleLocationChange(e.target.value)}
             >
               <MenuItem value="">
-                <em>Todas</em>
+                <em>{OPTION_ALL_FEM}</em>
               </MenuItem>
               {locations.map((loc) => (
                 <MenuItem key={loc.id} value={loc.id.toString()}>
@@ -102,7 +102,7 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
 
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <FormControl fullWidth size="small">
-            <InputLabel id="status-label">Estado</InputLabel>
+            <InputLabel id="status-label">{LABEL_STATUS}</InputLabel>
             <Select
               labelId="status-label"
               id="status-select"
@@ -111,7 +111,7 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
               onChange={(e) => setStatus(e.target.value)}
             >
               <MenuItem value="">
-                <em>Todos</em>
+                <em>{OPTION_ALL}</em>
               </MenuItem>
               {STATUS_OPTIONS.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -130,7 +130,7 @@ export const CharacterFilters = ({ onFilterChange, onLocationChange, locations }
             onClick={handleClearFilters}
             disabled={!name && !species && !status && !location}
           >
-            Limpiar filtros
+            {BTN_CLEAR_FILTERS}
           </Button>
         </Grid>
       </Grid>

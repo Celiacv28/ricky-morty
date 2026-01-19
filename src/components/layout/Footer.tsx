@@ -1,4 +1,5 @@
 import './Footer.css';
+import { APP_TITLE } from '../../utils/constants';
 
 export const Footer = () => {
   return (
@@ -15,7 +16,7 @@ export const Footer = () => {
           </a>
         </p>
         <p className="footer__text">
-          &copy; {new Date().getFullYear()} Rick and Morty Portal
+          &copy; {new Date().getFullYear()} {APP_TITLE}
         </p>
     </footer>
   );

@@ -2,6 +2,7 @@ import { Card, CardMedia, CardContent, Typography, Chip, Box, CardActionArea, Ic
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import type { Character } from '../../api/character/character.types';
 import { getStatusColor } from '../../utils/utils';
+import { LABEL_GENDER, LABEL_LOCATION_PREFIX, LABEL_ORIGIN } from '../../utils/constants';
 
 interface CharacterCardProps {
   character: Character;
@@ -105,7 +106,7 @@ export const CharacterCard = ({ character, onClick, isFavorite = false, onToggle
           </Box>
 
           <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-            <strong>Género:</strong> {character.gender}
+            <strong>{LABEL_GENDER}</strong> {character.gender}
           </Typography>
 
           <Typography 
@@ -113,7 +114,7 @@ export const CharacterCard = ({ character, onClick, isFavorite = false, onToggle
             color="text.secondary"
             sx={ellipsisStyles}
           >
-            <strong>Ubicación:</strong> {character.location.name}
+            <strong>{LABEL_LOCATION_PREFIX}</strong> {character.location.name}
           </Typography>
 
           <Typography 
@@ -121,7 +122,7 @@ export const CharacterCard = ({ character, onClick, isFavorite = false, onToggle
             color="text.secondary"
             sx={ellipsisStyles}
           >
-            <strong>Origen:</strong> {character.origin.name}
+            <strong>{LABEL_ORIGIN}</strong> {character.origin.name}
           </Typography>
         </CardContent>
       </CardActionArea>

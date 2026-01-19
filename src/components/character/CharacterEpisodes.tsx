@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box, Typography, Grid, Paper, Chip, Button } from '@mui/material';
 import { Tv, ExpandMore, ExpandLess } from '@mui/icons-material';
+import { LABEL_EPISODES, BTN_VIEW_LESS } from '../../utils/constants';
 import type { Episode } from '../../api/episode/episode.types';
 
 interface CharacterEpisodesProps {
@@ -19,7 +20,7 @@ export const CharacterEpisodes = ({ episodes }: CharacterEpisodesProps) => {
     <Box sx={{ mt: 4 }}>
       <Typography variant="h5" gutterBottom fontWeight="bold" sx={{ mb: 3 }}>
         <Tv sx={{ mr: 1, verticalAlign: 'middle' }} />
-        Episodios ({episodes.length})
+        {LABEL_EPISODES} ({episodes.length})
       </Typography>
 
       <Grid container spacing={{ xs: 2, sm: 3 }} >
@@ -62,7 +63,7 @@ export const CharacterEpisodes = ({ episodes }: CharacterEpisodesProps) => {
             onClick={() => setShowAll(!showAll)}
             endIcon={showAll ? <ExpandLess /> : <ExpandMore />}
           >
-            {showAll ? 'Ver menos' : `Ver todos (${episodes.length})`}
+            {showAll ? BTN_VIEW_LESS : `Ver todos (${episodes.length})`}
           </Button>
         </Box>
       )}

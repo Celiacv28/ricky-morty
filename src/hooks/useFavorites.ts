@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { characterApi } from '../api/character/characterApi';
 import type { Character } from '../api/character/character.types';
-import { FAVORITES_KEY } from '../utils/constants';
+import { FAVORITES_KEY, ERROR_MESSAGES } from '../utils/constants';
 
 interface UseFavoritesState {
   favoriteCharacters: Character[];
@@ -30,7 +30,7 @@ export const useFavorites = (): UseFavoritesState => {
         const data = await characterApi.getMultiple(favoriteIds);
         setFavoriteCharacters(data);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error al cargar favoritos');
+        setError(err instanceof Error ? err.message : ERROR_MESSAGES.LOAD_FAVORITES);
       } finally {
         setLoading(false);
       }

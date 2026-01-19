@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { characterApi } from '../api/character/characterApi';
 import { locationApi } from '../api/location/locationApi';
 import { episodeApi } from '../api/episode/episodeApi';
+import { ERROR_MESSAGES } from '../utils/constants';
 import type { Character } from '../api/character/character.types';
 import type { Episode } from '../api/episode/episode.types';
 
@@ -22,7 +23,7 @@ export const useCharacterDetail = (id: string | undefined): UseCharacterDetailSt
 
   useEffect(() => {
     if (!id) {
-      setError('ID de personaje no proporcionado');
+      setError(ERROR_MESSAGES.NO_ID);
       setLoading(false);
       return;
     }
@@ -59,7 +60,7 @@ export const useCharacterDetail = (id: string | undefined): UseCharacterDetailSt
           setEpisodes(Array.isArray(episodesData) ? episodesData : [episodesData]);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Error al cargar el personaje');
+        setError(err instanceof Error ? err.message : ERROR_MESSAGES.LOAD_CHARACTER);
         setCharacter(null);
         setLocationCharacters([]);
         setEpisodes([]);

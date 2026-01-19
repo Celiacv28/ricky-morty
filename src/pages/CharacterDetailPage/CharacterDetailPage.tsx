@@ -8,6 +8,7 @@ import { LocationCharacters } from '../../components/character/LocationCharacter
 import { ErrorMessage } from '../../components/common/ErrorMessage';
 import { Loading } from '../../components/common/Loading';
 import type { Character } from '../../api/character/character.types';
+import { ERROR_MESSAGES, BTN_BACK_TO_LIST } from '../../utils/constants';
 
 export const CharacterDetailPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -34,13 +35,13 @@ export const CharacterDetailPage = () => {
             sx={{ mb: 3 }}
             variant="outlined"
           >
-            Volver al listado
+            {BTN_BACK_TO_LIST}
           </Button>
         )}
 
         {loading && <Loading />}
         
-        {error && <ErrorMessage message={'Personaje no encontrado'} />}
+        {error && <ErrorMessage message={ERROR_MESSAGES.NOT_FOUND} />}
         
         {character && (
           <>
