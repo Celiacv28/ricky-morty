@@ -40,11 +40,11 @@ The application will be available at `http://localhost:5173`
 
 ### Technology Stack
 
-- **React 19** - Modern UI framework with hooks
+- **React** - Modern UI framework with hooks
 - **TypeScript** - Static typing for robustness
 - **Vite** - Fast and modern build tool
-- **Material-UI v7** - Design system and components
-- **React Router v7** - Client-side routing
+- **Material-UI** - Design system and components
+- **React Router** - Client-side routing
 
 ### Application Characteristics
 

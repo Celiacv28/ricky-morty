@@ -1,4 +1,3 @@
-// components/common/Pagination.tsx
 import { Box, Button, Typography } from '@mui/material';
 import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
