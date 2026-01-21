@@ -29,15 +29,20 @@ export const CharactersPage = () => {
   const { locations } = useLocations();
   const { favoriteCharacters, loading: favLoading, error: favError, toggleFavorite, isFavorite } = useFavorites();
 
-  const { characters, loading, error } = useMemo(() => {
-    if (showOnlyFavorites) {
-      return { characters: favoriteCharacters, loading: favLoading, error: favError };
-    }
-    if (selectedLocationId !== null) {
-      return locationData;
-    }
-    return apiData;
-  }, [showOnlyFavorites, selectedLocationId, favoriteCharacters, favLoading, favError, locationData, apiData]);
+  let characters = apiData.characters;
+  let loading = apiData.loading;
+  let error = apiData.error;
+
+  if (showOnlyFavorites) {
+    characters = favoriteCharacters;
+    loading = favLoading;
+    error = favError;
+  } else if (selectedLocationId !== null) {
+    characters = locationData.characters;
+    loading = locationData.loading;
+    error = locationData.error;
+  }
+
 
   const filteredCharacters = useMemo(() => {
     let filtered = characters;
