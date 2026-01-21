@@ -161,7 +161,6 @@ This hybrid approach balances API efficiency with flexible local filtering capab
 - **🌍 Interactive Location Map**: Visual representation of locations with character distribution
 - **🔔 Notifications**: Toast notifications for favorites actions and errors
 - **🌙 Dark Mode**: Theme switcher with user preference persistence
-- **📱 PWA Support**: Progressive Web App capabilities for offline access
 - **🔄 Character Comparison**: Side-by-side comparison of multiple characters
 - **🎭 Character Relationships**: Visual graph of character connections based on shared episodes/locations
 
